@@ -37,4 +37,15 @@ public class EmployeeService {
     public List<Employee> saveEmployee(List<Employee> employee) {
         return employeeRepository.saveAll(employee);
     }
+
+    public Map<String, Long> groupEmployeesByEducationUnderPaymentTier(int paymentTier) {
+        return jpaStreamer.stream(Employee.class)
+                .filter(employee -> employee.getPaymentTier() <= paymentTier)
+                .collect(Collectors.groupingBy(Employee::getEducation, Collectors.counting()));
+    }
+    public Map<String, Long> countEmployeesByGender() {
+        return jpaStreamer.stream(Employee.class)
+                .collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
+    }
 }
+

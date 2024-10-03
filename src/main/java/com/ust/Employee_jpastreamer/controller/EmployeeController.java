@@ -26,4 +26,12 @@ public class EmployeeController {
     public List<Employee> groupbyEmployeeByPaymentTier(){
         return employeeService.groupbyEmployeeByPaymentTier();
     }
+    @GetMapping("/groupByEducation/paymentTier/{tier}")
+    public Map<String, Long> groupEmployeesByEducationUnderPaymentTier(@PathVariable("tier") int paymentTier) {
+        return employeeService.groupEmployeesByEducationUnderPaymentTier(paymentTier);
+    }
+    @GetMapping("/countByGender")
+    public Map<String, Long> countEmployeesByGender() {
+        return employeeService.countEmployeesByGender();
+    }
 }
