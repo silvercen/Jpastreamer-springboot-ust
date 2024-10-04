@@ -47,5 +47,9 @@ public class EmployeeService {
         return jpaStreamer.stream(Employee.class)
                 .collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
     }
+    public Map<Integer, Long> countEmployeesByAge() {
+        return jpaStreamer.stream(Employee.class)
+                .collect(Collectors.groupingBy(Employee::getAge, Collectors.counting()));
+    }
 }
 
