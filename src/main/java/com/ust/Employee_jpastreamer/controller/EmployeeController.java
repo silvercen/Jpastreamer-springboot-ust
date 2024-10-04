@@ -34,4 +34,9 @@ public class EmployeeController {
     public Map<String, Long> countEmployeesByGender() {
         return employeeService.countEmployeesByGender();
     }
+
+    @GetMapping("/countByAge")
+    public Map<Integer, Long> countEmployeesByAge() {
+        return employeeService.countEmployeesByAge();
+    }
 }
